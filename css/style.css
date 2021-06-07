@@ -1,0 +1,125 @@
+@font-face {
+    font-family: arkhip;
+    src: url(../fonts/arkhip.otf);
+}
+*{
+    transition: all .3s;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: rgb(233, 233, 233);
+    font-family: arkhip,sans-serif;
+}
+header{
+    padding-top: 20px;
+}
+.container{
+    width: 85%;
+    margin: 0 auto;
+}
+.message{
+    width: 50%;
+    background: rgb(0, 106, 192);
+    padding:15px 30px;
+    border-radius: 10px;
+    margin: 0 auto;
+    color: white;
+}
+form{
+    margin-top: 20px;
+}
+input{
+    border: 0px;
+    border-radius: 5px;
+    padding:14px;
+    font-family: arkhip,sans-serif;
+    max-width: 160px;
+    box-shadow: 0px 0px 20px rgb(197, 197, 197);
+}
+input:focus{
+    outline: none;
+}
+.error{
+    margin-top: 10px;
+    border-bottom: 2px solid red;
+    width: 53%;
+}
+.success{
+    background: white;
+    color: rgb(50, 216, 0);
+    border-radius: 10px;
+    padding: 10px 20px ;
+}
+a{
+    text-decoration: none;
+}
+.del{
+    font-size: 30px;
+}
+.list_contacts{
+    margin-top: 30px;
+}
+ul{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+li{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.controls{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.controls a.btn{
+    border-radius: 40px;
+    padding: 12px 25px;
+}
+.controls a.add{
+    color: rgb(50, 216, 0);
+    border: 2px solid rgb(50, 216, 0);
+    margin-right: 15px;
+}
+.controls a.upd{
+    color: rgb(126, 0, 216);
+    border: 2px solid rgb(126, 0, 216);
+}
+.controls a.add:hover{
+    background:rgb(50, 216, 0);
+    color:rgb(255, 255, 255);
+}
+.controls a.upd:hover{
+    background: rgb(126, 0, 216);
+    color:rgb(255, 255, 255);
+}
+.add_form{
+    display: none;
+}
+.add_item{
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    display: flex;
+}
+.add_item input:nth-child(1){
+    margin-left: 23px;
+}
+.add_item input{
+    margin-right: 44px;
+}
+.add_item input[type="date"]{
+    width: 160px;
+}
+.add_form input[type="submit"]{
+    margin-top: 10px;
+    margin-left: 23px;
+    background:rgb(50, 216, 0);
+    color: white;
+}
