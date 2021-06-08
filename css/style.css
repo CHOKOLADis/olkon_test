@@ -72,6 +72,7 @@ li{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-top: 20px;
 }
 .controls{
     display: flex;
@@ -122,4 +123,36 @@ li{
     margin-left: 23px;
     background:rgb(50, 216, 0);
     color: white;
+}
+.msg_box{
+    background: rgb(34, 91, 214);
+    color: white;
+    padding: 15px 30px;
+    width: 30%;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+h5{
+    color: rgb(186, 222, 252);
+}
+h5,h3{
+    margin: 0;
+    padding: 0;
+}
+li a{
+    height: 35px;
+}
+a img{
+    width: 35px;
+    height: 35px;
+    filter: saturate(40%);
+    transform: rotate(0deg);
+}
+a img:hover{
+    filter: saturate(100%);
+    transform: rotate(10deg);
+}
+a img:active{
+    transform: rotate(180deg);
 }
