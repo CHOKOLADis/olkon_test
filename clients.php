@@ -1,4 +1,4 @@
-<?include 'db.php';ini_set('display_errors','off');
+<?include 'db.php';ini_set('display_errors','on');
 error_reporting('E_ALL');?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,11 +36,12 @@ error_reporting('E_ALL');?>
                         while($r = mysqli_fetch_array($query2)){
                             echo "
                             <li>
-                                <input type='text' name='fname' id='fname' value='{$r[fname]}' >
-                                <input type='text' name='sname' id='sname' value='{$r[sname]}' >
-                                <input type='text' name='tname' id='tname' value='{$r[tname]}' >
-                                <input type='text' name='date_record' id='date_record' value='{$r[date_record]}' >
-                                <input type='text' name='num_car' id='num_car' value='{$r[num_car]}' >
+                                <input type='text' name='fname' id='fname-{$r[id]}' value='{$r[fname]}' >
+                                <input type='text' name='sname id='sname-{$r[id]}' value='{$r[sname]}' >
+                                <input type='text' name='tname id='tname-{$r[id]}' value='{$r[tname]}' >
+                                <input type='text' name='date_record id='date_record-{$r[id]}' value='{$r[date_record]}' >
+                                <input type='text' name='num_car id='num_car-{$r[id]}' value='{$r[num_car]}' >
+                                <input value='{$r[id]}' type='hidden' name='id_user'>
                                 "?><a class="btn update" href='?update=<?=$r['id']?>'><img src="img/upd.png" alt="Обновить"></a><? echo "
                                 "?><a class="btn del" href='?del=<?=$r['id']?>'><img src="img/delete.png" alt="Удалить"></a><? echo "
                             </li>
@@ -89,15 +90,23 @@ error_reporting('E_ALL');?>
                         }
                         if (isset($_GET['update'])) {
                             $id2=$_GET['update'];
-
                             $fname=$_POST['fname'];
                             $sname=$_POST['sname'];
                             $tname=$_POST['tname'];
                             $date_record=$_POST['date_record'];
                             $num_car=$_POST['num_car'];
+                            
+                            $arr=array();
+                            $arr[]="fname='$fname'";
+                            $arr[]="sname='$sname'";
+                            $arr[]="tname='$tname'";
+                            $arr[]="date_record='$date_record'";
+                            $arr[]="num_car='$num_car'";
 
-                            $query4 = "UPDATE `clients` SET fname='$fname',sname='$sname',tname='$tname',date_record='$date_record',num_car='$num_car' WHERE id=$id2";
-
+                            $set=implode(',',$arr);
+                            $query4 = "UPDATE table SET $set WHERE user = '$id2'";
+                            
+                            echo $query4;
                             if ($connect->query($query4) === TRUE) {
                                     echo "
                                     <div class='msg_box'>
@@ -113,8 +122,6 @@ error_reporting('E_ALL');?>
                                     </div>
                                     ";
                             }
-
-                            
                         }
                         
                     }
@@ -134,13 +141,10 @@ error_reporting('E_ALL');?>
                     }	
                 }	            
             ?>
-            
         </ul>
         </div>
     </div>
 </header>
-
-
 <script src="js/main.js"></script>
 </body>
 </html>
