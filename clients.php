@@ -25,24 +25,32 @@ error_reporting('E_ALL');?>
         ?>
         <div class="list_contacts">
         <ul>
-            
+            <li>
+                <h4>Фамилия</h4>
+                <h4>Имя</h4>
+                <h4>Отчество</h4>
+                <h4>Дата занесения</h4>
+                <h4>Номер машины</h4>
+            </li>
             <?
                 $i=0;
                 $query2 =  mysqli_query($connect,"SELECT * FROM `clients`");
                 $n = mysqli_num_rows($query2);
                 if (isset($_SESSION['logged_user'])) { 
                     if ($_SESSION['logged_user']=="admin") { 
-                        echo '<form action="#" method="POST">';
+                        echo '<form action="#" method="POST" id="main_form">';
                         while($r = mysqli_fetch_array($query2)){
                             echo "
                             <li>
-                                <input type='text' name='fname' id='fname-{$r[id]}' value='{$r[fname]}' >
-                                <input type='text' name='sname id='sname-{$r[id]}' value='{$r[sname]}' >
-                                <input type='text' name='tname id='tname-{$r[id]}' value='{$r[tname]}' >
-                                <input type='text' name='date_record id='date_record-{$r[id]}' value='{$r[date_record]}' >
-                                <input type='text' name='num_car id='num_car-{$r[id]}' value='{$r[num_car]}' >
+                                <input type='text' name='fname' id='fname-$r[id]' value='{$r[fname]}' >
+                                <input type='text' name='sname' id='sname-$r[id]' value='{$r[sname]}' >
+                                <input type='text' name='tname' id='tname-$r[id]' value='{$r[tname]}' >
+                                <input type='text' name='date_record' id='date_record-$r[id]' value='{$r[date_record]}' >
+                                <input type='text' name='num_car' id='num_car-$r[id]' value='{$r[num_car]}' >
                                 <input value='{$r[id]}' type='hidden' name='id_user'>
-                                "?><a class="btn update" href='?update=<?=$r['id']?>'><img src="img/upd.png" alt="Обновить"></a><? echo "
+                                <button type='submit' name='submit_upd' id='submit_upd'>
+                                    <img src='img/upd.png'>
+                                </button>
                                 "?><a class="btn del" href='?del=<?=$r['id']?>'><img src="img/delete.png" alt="Удалить"></a><? echo "
                             </li>
                             ";
@@ -88,8 +96,8 @@ error_reporting('E_ALL');?>
                             </div>
                             ";
                         }
-                        if (isset($_GET['update'])) {
-                            $id2=$_GET['update'];
+                        if (isset($_POST['submit_upd'])) {
+                            $id2=$_POST['id_user'];
                             $fname=$_POST['fname'];
                             $sname=$_POST['sname'];
                             $tname=$_POST['tname'];
@@ -104,9 +112,8 @@ error_reporting('E_ALL');?>
                             $arr[]="num_car='$num_car'";
 
                             $set=implode(',',$arr);
-                            $query4 = "UPDATE table SET $set WHERE user = '$id2'";
+                            $query4 = "UPDATE `clients` SET $set WHERE id = '$id2'";
                             
-                            echo $query4;
                             if ($connect->query($query4) === TRUE) {
                                     echo "
                                     <div class='msg_box'>
