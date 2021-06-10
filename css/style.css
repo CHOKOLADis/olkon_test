@@ -66,12 +66,13 @@ ul{
     margin: 0;
     padding: 0;
 }
-li{
+form li{
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-around !important;
+    margin-top: 20px;
 }
 .controls{
     display: flex;
@@ -122,4 +123,86 @@ li{
     margin-left: 23px;
     background:rgb(50, 216, 0);
     color: white;
+}
+.msg_box{
+    background: rgb(34, 91, 214);
+    color: white;
+    padding: 15px 30px;
+    width: 30%;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+h5{
+    color: rgb(186, 222, 252);
+}
+h5,h4,h3{
+    margin: 0;
+    padding: 0;
+}
+form li a{
+    height: 35px;
+}
+button{
+    border: 0;
+    background: transparent;
+}
+button img{
+    width: 35px;
+    height: 35px;
+    filter: saturate(40%);
+    transform: rotate(0deg);
+}
+button img:hover{
+    filter: saturate(100%);
+    transform: rotate(10deg);
+}
+button img:active{
+    transform: rotate(180deg);
+}
+a img{
+    width: 35px;
+    height: 35px;
+    filter: saturate(40%);
+    transform: rotate(0deg);
+}
+a img:hover{
+    filter: saturate(100%);
+    transform: rotate(10deg);
+}
+a img:active{
+    transform: rotate(180deg);
+}
+ul li:nth-child(1){
+    justify-content: unset;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    text-align: center;
+}
+ul li{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+ul li p{
+    margin: 0;
+    padding: 0;
+    width: 160px;
+    border: 0px;
+    border-radius: 5px;
+    padding:14px;
+    box-shadow: 0px 0px 20px rgb(197, 197, 197);
+    margin-left: 10px;
+    margin-right: 28px;
+}
+h4{
+    width: 160px;
+    justify-content: unset;
+    margin-left: 30px;
+    margin-right: 28px;
 }
